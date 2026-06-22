@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>竞彩网 · 专题介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #f9e2b7 0%, #f3cd8f 40%, #eaba7a 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .page-wrap {
+      max-width: 1000px;
+      width: 100%;
+      background: rgba(255, 251, 242, 0.3);
+      backdrop-filter: blur(2px);
+      border-radius: 3.5rem;
+      padding: 1.8rem 1.5rem 2.5rem;
+      box-shadow: 0 12px 28px rgba(120, 70, 20, 0.2);
+    }
+
+    .hero {
+      background: linear-gradient(130deg, #fff6e6, #fef0d8);
+      padding: 2.8rem 2rem 2.4rem;
+      border-radius: 2.8rem;
+      text-align: center;
+      box-shadow: 0 6px 14px rgba(180, 120, 40, 0.15);
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      color: #5b3f1c;
+      font-weight: 600;
+      text-shadow: 2px 2px 0 #f3dbb0;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero .sub {
+      font-size: 1.15rem;
+      color: #7c5e33;
+      background: #f6e2c0;
+      display: inline-block;
+      padding: 0.2rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 450;
+      letter-spacing: 0.5px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 1.2rem auto 0;
+      color: #4e3a1f;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .card {
+      background: #fffdf9;
+      border-radius: 2.2rem;
+      padding: 1.8rem 2.2rem;
+      box-shadow: 0 4px 12px rgba(160, 100, 30, 0.1);
+      border: 1px solid rgba(245, 210, 160, 0.4);
+      transition: transform 0.15s ease, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(150, 95, 30, 0.18);
+    }
+
+    .card h2 {
+      color: #6b4b24;
+      font-size: 1.6rem;
+      border-left: 6px solid #dba35b;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+      font-weight: 550;
+    }
+
+    .card p {
+      color: #44341e;
+      line-height: 1.75;
+      font-size: 1.02rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .card .highlight {
+      background: #fcf1de;
+      padding: 0.7rem 1.2rem;
+      border-radius: 30px;
+      display: inline-block;
+      font-weight: 500;
+      color: #603f1a;
+      margin-top: 0.4rem;
+    }
+
+    .faq-note {
+      background: #fdf6ea;
+      border-radius: 2.2rem;
+      padding: 1.4rem 2rem;
+      border: 1px solid #eaccaa;
+      margin-top: 0.6rem;
+    }
+
+    .faq-note summary {
+      font-weight: 600;
+      color: #5c401f;
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0.3rem 0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .faq-note summary::before {
+      content: "▸";
+      font-size: 1.4rem;
+      color: #b58344;
+      transition: transform 0.2s;
+    }
+
+    .faq-note[open] summary::before {
+      content: "▾";
+    }
+
+    .faq-note .faq-content {
+      padding: 1rem 0.5rem 0.2rem;
+      color: #4f3b21;
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    .link-button {
+      background: #eccea8;
+      border-radius: 60px;
+      padding: 0.5rem 0.4rem 0.5rem 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      font-size: 1.05rem;
+      margin: 0.5rem 0 0.2rem;
+      transition: background 0.2s, box-shadow 0.2s;
+      border: 1px solid #dbb37a;
+      box-shadow: 0 2px 6px rgba(150, 90, 28, 0.12);
+    }
+
+    .link-button a {
+      text-decoration: none;
+      color: #2d1c08;
+      font-weight: 600;
+      background: #fff5e6;
+      padding: 0.35rem 1.5rem;
+      border-radius: 50px;
+      margin-left: 0.4rem;
+      border: 1px solid #dbaa6b;
+      transition: all 0.15s;
+    }
+
+    .link-button a:hover {
+      background: #dbaa6b;
+      color: #1f1204;
+      border-color: #bf8b46;
+    }
+
+    .link-button span {
+      color: #4e3519;
+      font-weight: 450;
+    }
+
+    .footer-note {
+      margin-top: 2.2rem;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #4d3b22;
+      background: rgba(255, 245, 228, 0.7);
+      padding: 1.2rem 1.6rem;
+      border-radius: 60px;
+      backdrop-filter: blur(2px);
+      border: 1px solid #e2c199;
+    }
+
+    .footer-note a {
+      color: #3f2a0e;
+      font-weight: 600;
+      text-decoration: underline wavy #b68a50 1.5px;
+      text-underline-offset: 4px;
+      padding: 0 0.2rem;
+    }
+
+    .footer-note a:hover {
+      background: #b68a50;
+      color: #fcf3e4;
+      text-decoration: none;
+      border-radius: 30px;
+      padding: 0.1rem 0.8rem;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 0.8rem; }
+      .page-wrap { padding: 1rem 0.8rem; border-radius: 2rem; }
+      .hero { padding: 1.8rem 1.2rem; }
+      .hero h1 { font-size: 2rem; }
+      .card { padding: 1.4rem 1.2rem; }
+      .card h2 { font-size: 1.3rem; }
+      .link-button { flex-wrap: wrap; padding: 0.5rem 1rem; }
+      .footer-note { font-size: 0.9rem; padding: 0.8rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <div class="hero">
+    <h1>竞彩 · 在场</h1>
+    <div class="sub">从站点到生活</div>
+    <p>
+      手机另一端，是很多人的看球习惯与休闲选择。关于一个叫「<a href="https://app-main-sporttery.com" style="color:#68471f;font-weight:600;text-decoration:underline 2px #c89652;text-underline-offset:3px;">竞彩网</a>」的平台，我们不必把它说得神秘，更像是一个你随时打开、随手浏览的信息服务窗口。
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <h2>它是什么 · 一个基本介绍</h2>
+      <p>
+        简单来说，<a href="https://app-main-sporttery.com" style="font-weight:500;color:#6d4a1e;">竞彩网</a>是一个面向体育爱好者的数据与资讯站点。你可以在上面看到各大赛事的实时数据、赛程安排以及历史统计。它不制造观点，而是陈列客观信息，让每个人根据自己的理解做判断。
+      </p>
+      <p>
+        很多用户习惯在比赛前打开它浏览几页，或在朋友聊球时用它印证某个细节。它像一本随时更新的数字手册，不喧哗，但有用。
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>可信与日常 · 两个侧面</h2>
+      <p>
+        作为一个长期运营的站点，竞彩网在信息更新速度与数据准确性上保持着稳定的口碑。没有夸张弹窗，没有诱导操作，你所看到的每一个数字都有赛事来源标注。
+      </p>
+      <p>
+        有人把它当作看球前的一个仪式：泡杯茶，打开<a href="https://app-main-sporttery.com" style="font-weight:500;color:#6d4a1e;">竞彩网</a>，扫一眼今日对阵，再切换到直播。不知不觉，它就成了生活里一个小小的习惯，不刻意，但踏实。
+      </p>
+      <div class="highlight">✔ 数据来源清晰 · 界面简洁 · 无过度商业打扰</div>
+    </div>
+
+    <div class="card">
+      <h2>使用场景 · 你会在什么时候打开它</h2>
+      <p>
+        <strong>周末午后</strong>——翻翻五大联赛的积分变化，看看有哪些冷门轮换。<br>
+        <strong>晚间赛事密集时</strong>——快速对比两队的交锋记录与近期状态。<br>
+        <strong>日常碎片时间</strong>——像翻杂志一样，随便划一划，发现一些有趣的数据规律。
+      </p>
+      <p>
+        它不要求你注册，不强迫你停留。想看了就点开，不想看了就关掉。这样一个轻量、可靠的存在，反而是现在网络里挺难得的东西。
+      </p>
+    </div>
+
+    <details class="faq-note">
+      <summary>常见疑问摘要</summary>
+      <div class="faq-content">
+        <p><strong>问：</strong>这个网站是官方平台吗？<br>
+        <strong>答：</strong><a href="https://app-main-sporttery.com" style="font-weight:500;color:#6d4a1e;">竞彩网</a>是一个提供体育赛事数据与资讯的站点，并非任何实体机构的“官方门户”。它独立运营，专注于信息展示。</p>
+        <p><strong>问：</strong>需要付费才能看吗？<br>
+        <strong>答：</strong>目前网站的基础数据与赛程浏览完全免费，没有任何隐藏收费环节。</p>
+        <p><strong>问：</strong>信息更新及时吗？<br>
+        <strong>答：</strong>根据多数用户的反馈，比分、赛果与阵容信息通常会在赛后几分钟内完成更新，日常数据每日同步。</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="footer-note">
+    <span>如果你想直接看看这个站点的样子，</span>
+    <span class="link-button">
+      <span>可前往</span>
+      <a href="https://app-main-sporttery.com">竞彩网</a>
+    </span>
+    <span style="display:inline-block; margin-left:0.2rem;">—— 一个安静的体育数据角落。</span>
+  </div>
+</div>
+</body>
+</html>
