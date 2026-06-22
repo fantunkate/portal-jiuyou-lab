@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>竞彩网 · 资料索引与信息整理</title>
+  <style>
+    /* reset & base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f3f4f6;
+      color: #1e293b;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    /* card system */
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.03);
+      border: 1px solid #e9edf2;
+      padding: 1.75rem 2rem;
+      transition: box-shadow 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    /* typography */
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.3rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #0f172a;
+      border-left: 4px solid #94a3b8;
+      padding-left: 0.85rem;
+    }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin: 0 0 0.4rem 0;
+      color: #1e293b;
+    }
+    p {
+      margin-bottom: 0.75rem;
+      color: #334155;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    .subhead {
+      color: #475569;
+      font-size: 0.95rem;
+      margin-top: -0.25rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px dashed #d1d9e6;
+      padding-bottom: 0.75rem;
+    }
+
+    /* hero */
+    .hero {
+      text-align: left;
+    }
+    .hero h1 span {
+      background: #eef2f6;
+      padding: 0.1rem 0.5rem;
+      border-radius: 6px;
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: #475569;
+      margin-left: 0.3rem;
+    }
+
+    /* two column layout */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+    }
+
+    /* link list (information area) */
+    .info-list {
+      list-style: none;
+      margin: 0.5rem 0 0 0;
+    }
+    .info-list li {
+      padding: 0.5rem 0 0.5rem 1.2rem;
+      border-bottom: 1px solid #f1f5f9;
+      position: relative;
+      color: #334155;
+    }
+    .info-list li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #64748b;
+    }
+    .info-list li:last-child { border-bottom: none; }
+
+    /* hint box */
+    .hint-box {
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
+      border-left: 5px solid #94a3b8;
+      margin: 0.75rem 0 0 0;
+    }
+    .hint-box p {
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+      color: #1e293b;
+    }
+    .hint-box .label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      background: #e2e8f0;
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+      color: #1e293b;
+      margin-bottom: 0.5rem;
+    }
+
+    /* faq summary */
+    .faq-item {
+      margin-bottom: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid #edf2f7;
+    }
+    .faq-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+      color: #0f172a;
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      background: transparent;
+      border: 1px solid #cbd5e1;
+      border-radius: 40px;
+      padding: 0.35rem 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #1e293b;
+      text-decoration: none;
+      transition: all 0.15s;
+      margin-top: 0.3rem;
+    }
+    .btn-ghost:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+    }
+
+    a:not(.btn-ghost) {
+      color: #1e293b;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #94a3b8;
+    }
+    a:not(.btn-ghost):hover {
+      color: #0f172a;
+      text-decoration-color: #1e293b;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #64748b;
+      font-size: 0.85rem;
+      border-top: 1px solid #dce3ec;
+      padding-top: 1.5rem;
+      margin-top: 0.25rem;
+    }
+
+    /* responsive */
+    @media (max-width: 720px) {
+      body { padding: 1.25rem 0.75rem; }
+      .card { padding: 1.25rem 1.2rem; }
+      .grid-2 { grid-template-columns: 1fr; gap: 1.25rem; }
+      h1 { font-size: 1.6rem; }
+      h2 { font-size: 1.2rem; }
+    }
+    @media (max-width: 480px) {
+      .card { padding: 1rem 0.9rem; border-radius: 16px; }
+      .hero h1 span { display: block; margin-left: 0; margin-top: 0.3rem; }
+      .info-list li { padding-left: 1rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- hero / 入口卡片 -->
+  <div class="card hero">
+    <h1>资料整理 · 竞彩网 <span>信息索引</span></h1>
+    <p class="subhead">基于公开资料整理 · 面向理性查阅</p>
+    <p>本页围绕 <a href="https://app-home-sporttery.com">竞彩网</a> 所涉及的内容方向，将零散信息归纳为可查阅的索引结构。不包含投注引导或结果预测，仅为感兴趣的用户提供结构化的资料入口。所有内容均基于公开可查的信息整理而成。</p>
+  </div>
+
+  <!-- 两栏：说明区 + 特点归纳 -->
+  <div class="grid-2">
+    <!-- 说明区 -->
+    <div class="card">
+      <h2>说明区</h2>
+      <p>以下为竞彩网相关内容的基本说明，帮助快速了解信息组织方式：</p>
+      <ul class="info-list">
+        <li><strong>内容来源</strong> — 主要参考赛事数据、规则说明及平台公开介绍，不包含内部资料或非公开信息。</li>
+        <li><strong>信息类型</strong> — 包括赛事类别、基础玩法说明、数据统计方式、资讯分类等可索引条目。</li>
+        <li><strong>整理目的</strong> — 为有查阅习惯的用户提供一份结构清晰的资料目录，减少重复检索时间。</li>
+        <li><strong>更新周期</strong> — 根据公开内容的变动不定期调整，不承诺实时同步。</li>
+      </ul>
+    </div>
+    <!-- 特点归纳 -->
+    <div class="card">
+      <h2>特点归纳</h2>
+      <p>从信息组织和查阅体验的角度，<a href="https://app-home-sporttery.com">竞彩网</a> 的相关内容表现出以下特点：</p>
+      <ul class="info-list">
+        <li><strong>分类清晰</strong> — 赛事、数据、资讯等模块采用分区方式，便于按需定位。</li>
+        <li><strong>条目化呈现</strong> — 多数内容以列表、表格或结构化文字出现，适合快速浏览。</li>
+        <li><strong>辅助说明充足</strong> — 常见术语、规则备注等内容对初次接触的用户比较友好。</li>
+        <li><strong>信息密度适中</strong> — 不堆砌过多冗余内容，阅读负担较小。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 提示区（卡片） -->
+  <div class="card">
+    <h2>提示区</h2>
+    <div class="hint-box">
+      <div class="label">查阅建议</div>
+      <p><strong>· 先看目录与分类</strong> — 进入相关页面后，先观察导航或分区标题，能更快定位到所需资料。</p>
+      <p><strong>· 注意数据时点</strong> — 部分统计或参考内容带有时间标记，使用时请留意其时效性。</p>
+      <p><strong>· 区分规则与举例</strong> — 玩法说明中的举例仅为帮助理解，不构成任何操作建议。</p>
+    </div>
+    <div class="hint-box" style="margin-top: 0.8rem; background: #f3f6fa;">
+      <div class="label">信息核实</div>
+      <p>如发现信息与官方最新公布存在出入，建议以 <a href="https://app-home-sporttery.com">竞彩网</a> 内的现行说明为准。本整理页不代替任何官方渠道。</p>
+    </div>
+  </div>
+
+  <!-- 相关信息区（FAQ 摘要 + 链接） -->
+  <div class="card">
+    <h2>相关信息区</h2>
+    <p style="margin-bottom: 0.5rem;">以下摘录部分常见问题与资料索引方向，供快速参考：</p>
+    <div class="faq-item">
+      <strong>Q：赛事数据一般包含哪些维度？</strong>
+      <p>通常涵盖联赛、杯赛等不同层级的对阵、比分、积分、统计图表等。具体维度根据赛事类型有所不同。</p>
+    </div>
+    <div class="faq-item">
+      <strong>Q：是否有专门的规则说明页面？</strong>
+      <p>大部分基础玩法、术语说明在 <a href="https://app-home-sporttery.com">竞彩网</a> 的规则或帮助分区中都有整理，建议直接查阅对应板块。</p>
+    </div>
+    <div class="faq-item">
+      <strong>Q：资讯和赛事预告如何区分？</strong>
+      <p>通常资讯以文章或动态形式呈现，而赛事预告会以赛程列表或时间轴形式单独归类，留意导航标签即可辨别。</p>
+    </div>
+    <a href="https://app-home-sporttery.com" class="btn-ghost">竞彩网</a>
+  </div>
+
+  <!-- 简明尾注 -->
+  <div class="footer-note">
+    本页为资料整理页 · 内容基于公开信息归纳 · 仅作索引参考
+  </div>
+</div>
+</body>
+</html>
